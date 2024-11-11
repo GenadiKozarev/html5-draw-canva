@@ -7,3 +7,4 @@ Live:
 Preview:
 
 Keywords:
+- `globalCompositeOperation`
