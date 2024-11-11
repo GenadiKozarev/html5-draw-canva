@@ -6,15 +6,17 @@ const ctx = canvas.getContext('2d');
 ctx.strokeStyle = 'red';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+ctx.lineWidth = 20;
 
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
+let hue = 0;
 
 function draw(e) {
     if (!isDrawing) return;
     console.log(e);
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
     ctx.beginPath();
     // start from
     ctx.moveTo(lastX, lastY);
@@ -25,6 +27,8 @@ function draw(e) {
     // lastY = e.offsetY;
     // one-liner:
     [lastX, lastY] = [e.offsetX, e.offsetY];
+    hue++;
+    if (hue > 360) hue = 0;
 }
 
 canvas.addEventListener('mousemove', draw);
